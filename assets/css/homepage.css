@@ -24,14 +24,16 @@ body{
 	width:100%;
 }
 
+.navbar {
+	color: #ffffff;
+}
+
 .navbar-items {
 	margin-top: 0;
 	margin-bottom: 0;
+	display: block;
 }
 
-.navbar-nav {
-	margin-top:2%;
-}
 
 .navbar-nav li a{
 	color: #ffffff;
@@ -41,10 +43,46 @@ body{
 	font-size: 12px;
 	text-transform: uppercase;
 	border-radius: 3px;
+	margin: 0px;
+	box-shadow: none;
+
+}
+
+.navbar-nav .navbar-items:hover{
+	background-color: #eee;
+	color:#000;
+}
+
+.navbar-nav li .btn-dropdown{
+	color: #ffffff;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	font-weight: 500;
+	font-size: 12px;
+	text-transform: uppercase;
+	border-radius: 3px;
+	margin: 0px;
+	box-shadow: none;
+}
+
+.navbar-nav li .btn-dropdown:hover{
+	background-color: #eee;
+	color: #000;
+}
+
+@media (max-width: 768px){
+	.navbar .btn-dropdown {
+		text-align: center;
+		display: block;
+	}
+}
+
+.dropdown-menu {
+	background-color: rgba(0, 0, 0, 0.4);
 }
 
 .wrapper .header {
-	height: 400px;
+	height: 600px;
     padding-top: 100px;
     background-size: cover;
     background-position: center center;
@@ -55,17 +93,34 @@ body{
 	color:#ffffff;
 }
 .Aashansh-header h1 {
-    font-size: 4.8em;
+    font-size: 6.0em;
     font-weight: 600;
 }
-@media (max-width: 768px){
-	.navbar-collapse {
-		color: red;
-		margin-top: 9%;
-		border: none;
-	}
+.Aashansh-header h3 {
+    font-size: 2.4em;
+    font-weight: 600;
 }
 
+@media (max-width: 768px){
+	.navbar {
+		display: block;
+	}
+	.navbar-collapse {
+		border: none;
+	}
+
+}
+
+@media (max-width: 400px){
+	.Aashansh-header h1 {
+    	font-size: 2.4em;
+    	font-weight: 600;
+	}
+	.Aashansh-header h3 {
+    	font-size: 1.6em;
+    	font-weight: 600;
+	}
+}
 @media (max-width: 768px){
 	.navbar {
 		background-color: rgba(0, 0, 0, 0.4);
@@ -74,3 +129,50 @@ body{
 	}
 
 }
+
+
+@media (min-width: 768px){
+	header {
+		height: 550%;
+
+	}
+
+}
+
+footer {
+	padding: 15px;
+}
+footer li {
+	text-decoration: none;
+	color: black;
+	font-weight: 500;
+	font-size: 12px;
+	text-transform: uppercase;
+	border-radius: 3px;
+	text-decoration: none;
+	position: relative;
+	display: inline-block;
+	margin-left: 10px;
+}
+footer li a{
+	color: black;
+}
+
+.section {
+  padding: 70px 0;
+}
+
+.main-card {
+  margin: -60px 30px 0px;
+  border-radius: 10px;
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+.carousel .left {
+  cursor: url("../img/arrow-left.png"), url("../img/arrow-left.cur"), default !important;
+}
+.carousel .right {
+  cursor: url("../img/arrow-right.png"), url("../img/arrow-right.cur"), default !important;
+}
+
+
