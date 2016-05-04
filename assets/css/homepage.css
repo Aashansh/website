@@ -1,0 +1,76 @@
+body{
+	background-color:#CCCCCC;
+}
+
+.Aashansh-Brandname {
+	font-size: 16px;
+    color: #FFFFFF;
+    line-height: 15px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 15px;
+    width: 70px;
+    height: 30px;
+    text-align: left;
+}
+
+.Aashansh-Header-logo{
+	overflow: hidden;
+    width: 50px;
+    float: left;
+}
+
+.Aashansh-Header-logo img{
+	width:100%;
+}
+
+.navbar-items {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.navbar-nav {
+	margin-top:2%;
+}
+
+.navbar-nav li a{
+	color: #ffffff;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	font-weight: 500;
+	font-size: 12px;
+	text-transform: uppercase;
+	border-radius: 3px;
+}
+
+.wrapper .header {
+	height: 400px;
+    padding-top: 100px;
+    background-size: cover;
+    background-position: center center;
+}
+
+.Aashansh-header {
+	text-align: center;
+	color:#ffffff;
+}
+.Aashansh-header h1 {
+    font-size: 4.8em;
+    font-weight: 600;
+}
+@media (max-width: 768px){
+	.navbar-collapse {
+		color: red;
+		margin-top: 9%;
+		border: none;
+	}
+}
+
+@media (max-width: 768px){
+	.navbar {
+		background-color: rgba(0, 0, 0, 0.4);
+		border-radius: 0;
+
+	}
+
+}
