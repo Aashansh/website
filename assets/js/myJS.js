@@ -14,6 +14,15 @@ $(document).ready(function(){
   });
 });
 
+//JS For LearnMore
+function showDiv() {
+   document.getElementById('welcomeDiv').style.display = "block";
+   document.getElementById('Show-about-us').style.display = "none";
+}
+function hideDiv() {
+   document.getElementById('welcomeDiv').style.display = "none";
+   document.getElementById('Show-about-us').style.display = "block";
+}
 
 
 //JS For Parallax

@@ -13,8 +13,10 @@
 	    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
 	   	<link href="../assets/css/mdb.min.css" rel="stylesheet" />
 	    <link href="../assets/css/homepage.css" rel="stylesheet" />
+	    <link href="../assets/css/bootstrapsocial.css" rel="stylesheet" />
 
-	    
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+
 	</head>
 	<!--Head Structure End-->
 
@@ -50,7 +52,7 @@
 
 							 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 							    <li><a href="#">Where it all began</a></li>
-							    <li><a href="#">Board Of Directors</a></li>
+							    <li><a href="BoardOfDirectors.html">Board Of Directors</a></li>
 							    <li><a href="#">Our Models</a></li>
 							    <li><a href="#">Our Partners</a></li>
 							    <li><a href="#">Case Stories</a></li>
@@ -204,10 +206,27 @@
 	    				<!--About Us Text-->
 	    				<div class="row" style="text-align:center">
 	    					<h2>About Us</h2>
-	    					<div class="col-md-8 col-md-offset-2">
-	    						<p>Aashansh is a non-profit organisation with a mission to provide children from underprivileged communities in India with the confidence and knowledge to unlock the door to social mobility, through weekly mentorship sessions and an experiential education programme.</p>
+	    					<div class="row">
+		    					<div class="col-md-8 col-md-offset-2">
+		    						<p>Aashansh is a non-profit organisation with a mission to provide children from underprivileged communities in India with the confidence and knowledge to unlock the door to social mobility, through weekly mentorship sessions and an experiential education programme.</p>
+		    						<a id="Show-about-us" value="Show Div" onclick="showDiv()" > LEARN MORE </a>
+		    					</div>
+								
+	    					</div>
+	    					<div id="welcomeDiv"  style="display:none;" class="answer_list row">
+		    					
+		    					<div class="col-md-8 col-md-offset-2">
+		    						<p>We pair each child with a mentor; a mentor who guides them, supports them and believes in them. Together, mentor and child go on a journey to unearth hidden talents, grow existing ones and build long-lasting friendships, establishing in each child the confidence that they can define their own life.</p>
+		    						<p>We believe however that a child needs both the confidence to believe in change and the educational foundation to make that change possible in order to truly realise their potential.</p>
+		    						<p>Our before and after school programme, which offers an experiential approach to learning, therefore ensures that each child has the toolkit to turn their dreams, nurtured through the mentorship sessions, into a reality.</p>
+									<p>So each child leaves Aashansh equipped with both the confidence and the knowledge required to carry on their journey towards a better life independently, and with an unshakable sense of self-worth.</p>
+									<p>Aashansh is currently working with 40 children, aged 6-18, in a street community in Worli. From our centre at Century Bazaar, we teach nearly 250 sessions a year. Combined with 50 mentorship sessions, this comes to 600 hours of interaction with each Aashansh child a year.</p>
+									</p>
+									<a id="Hide-about-us" name="answer" value="Hide Div" onclick="hideDiv()" > HIDE </a>
+		    					</div>
 	    					</div>
 	    				</div>
+	    				<br><br>
 	    				<!--End About Us-->
 	    				<div class="row">
 					        <div class="col-md-4 redirection-card">
@@ -294,19 +313,53 @@
 		                        <h5>The Aashansh Foundation</h5>
 		                        <p>The Aashansh foundation, Highlight films, near blue frog, Mathuradas mill compound, N.M. Joshi marg, lower parel, Mumbai 400013.</p>
 		                    </div>
-                    		<div class="col-md-6">
-		                        <h5>Quick Links</h5>
-		                        <ul>
-		                            <li><a href="#!">Home Page</a></li>
-		                            <li><a href="#!">News</a></li>
-		                            <li><a href="#!">Blog</a></li>
-		                            <li><a href="#!">Contact Us</a></li>
-		                        </ul>
-		                    </div>
+		                    <center>
+	                    		<div class="col-md-6">
+	                    			<div class="row">
+				                        <h5>Quick Links</h5>
+				                        <ul>
+				                            <li><a href="#!">Home Page</a></li>
+				                            <li><a href="#!">News</a></li>
+				                            <li><a href="#!">Blog</a></li>
+				                            <li><a href="#!">Contact Us</a></li>
+				                        </ul>
+			                    	</div>
+			                    	
+			                    	<div class="social-media row">
+			                    		Follow Us On:
+			                    		<ul class="social-media-icons">
+											<li>
+												<a class="btn btn-social-icon btn-twitter">
+	    											<span class="fa fa-twitter"></span>
+												</a>
+											</li>
+											<li>
+												<a class="btn btn-social-icon btn-facebook">
+	    											<span class="fa fa-facebook"></span>
+												</a>
+											</li>
+											<li>
+												<a class="btn btn-social-icon btn-linkedin">
+	    											<span class="fa fa-linkedin"></span>
+												</a>
+											</li>
+											<li>
+												<a class="btn btn-social-icon btn-youtube">
+	    											<span class="fa fa-youtube"></span>
+												</a>
+											</li>
+			                    		</ul>
+			                    	</div>
+		                    	
+		                    	</div>
+		                    </center>
 		                </div>
-			        <div class="copyright pull-right">
-			            &copy; 2016, The Aashansh Foundation.
-			        </div>
+		            </nav>  
+		            <center>
+				        <div class="copyright">
+				            &copy; 2016, The Aashansh Foundation.
+				        </div>
+			    	</center>
 			    </div>
 			</footer>
 			<!--Footer End-->
