@@ -26,6 +26,25 @@ $(document).ready(function(){
   });
 });
 
+//JS For moving arrow
+$(document).ready(function(){
+     $(".Moving-arrow").hover(function(){
+        $(".img-arrow").css("opacity","1");
+        $(".img-arrow").css("transition-duration","0.5s");
+        $(".img-arrow").css("-webkit-transition-duration","0.5s");
+        $(".img-arrow").css("left", "30%");
+        $(".img-arrow").css("height","30%");
+
+     },function(){
+        $(".img-arrow").css("opacity","0");
+        $(".img-arrow").css("transition-duration","0s");
+        $(".img-arrow").css("-webkit-transition-duration","0s"); 
+        $(".img-arrow").css("left", "-40%");
+        $(".img-arrow").css("height","0");
+        
+     });
+});
+
 //JS For LearnMore
 function showDiv() {
    document.getElementById('welcomeDiv').style.display = "block";
