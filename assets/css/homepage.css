@@ -578,8 +578,6 @@ p{
 }
 
 
-
-
 .img-arrow {
     position: absolute;
     top: 35%;
@@ -589,4 +587,8 @@ p{
     -webkit-transition-duration:0s;
     transition-property: left,opacity;
     transition-duration:0s;
+}
+
+.student-detaillist{
+    padding: 10%;
 }
