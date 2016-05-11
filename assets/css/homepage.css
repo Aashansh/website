@@ -16,14 +16,30 @@ body{
 
 .Aashansh-Header-logo{
 	overflow: hidden;
-    width: 50px;
     float: left;
 }
 
+@media (max-width: 768px){
+    .Aashansh-Header-logo {
+        width: 40px;
+    }
+}
+
+.Aashansh-Header-logo-small{
+    width: 40px;
+    -webkit-transition: 3s;
+    -moz-transition: 3s;
+    -ms-transition: 3s;
+    -o-transition: 3s;
+    transition: 3s;
+}
 .Aashansh-Header-logo img{
 	width:100%;
 }
 
+.navbar-collapse li:hover{
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15);
+}
 .navbar {
 	color: #ffffff;
 }

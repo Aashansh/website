@@ -1,11 +1,12 @@
 var transparent = true;
 var transparentDemo = true;
-
+var logo = document.getElementsByClassName('Aashansh-Header-logo')[0];
 
 //JS For Navbar Switch
 $(document).ready(function(){
   $(window).scroll(function() { 
     if ($(document).scrollTop() > 50) { 
+      logo.classList.add('Aashansh-Header-logo-small');
       $(".navbar-fixed-top").css("WebkitTransitionDuration","2s");
       $(".Aashansh-Brandname").css("WebkitTransitionDuration","2s");
       $(".Aashansh-Header-logo").css("WebkitTransitionDuration","2s");
@@ -13,12 +14,12 @@ $(document).ready(function(){
       $(".navbar-fixed-top").css("z-index", "16");
       $(".navbar-fixed-top").css("padding", "0px");
       $(".navbar-fixed-top").css("height", "60px");
-      $(".Aashansh-Header-logo").css("display", "none");
       $(".Aashansh-Brandname").css("font-size", "14px");
       $(".Aashansh-Brandname").css("padding-bottom", "10px");
       $(".Aashansh-Brandname").css("width", "100px");
 
     } else {
+      logo.classList.remove('Aashansh-Header-logo-small');
       $(".navbar-fixed-top").css("background-color", "transparent"); 
       $(".Aashansh-Header-logo").css("display", "block");
       $(".Aashansh-Brandname").css("width", "70px");
