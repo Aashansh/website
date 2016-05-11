@@ -36,11 +36,10 @@ body{
 
 
 .navbar-nav li a{
-	color: #ffffff;
 	padding-top: 15px;
 	padding-bottom: 15px;
 	font-weight: 500;
-	font-size: 12px;
+	font-size: 16px;
 	text-transform: uppercase;
 	border-radius: 3px;
 	margin: 0px;
@@ -54,11 +53,10 @@ body{
 }
 
 .navbar-nav li .btn-dropdown{
-	color: #ffffff;
 	padding-top: 15px;
 	padding-bottom: 15px;
 	font-weight: 500;
-	font-size: 12px;
+	font-size: 16px;
 	text-transform: uppercase;
 	border-radius: 3px;
 	margin: 0px;
@@ -454,8 +452,22 @@ p{
     font-family: 'Muli', sans-serif ,Arial,sans-serif;
 }
 
+a
+{
+    color: #ffffff;
+}
+
 .redirection-card .card .card-content{
 	height: 200px;
+}
+
+/* The following class is for the nav-bar on top of carousel */
+.carousel-nav {
+    background: black;
+    color: white;
+    height: 40px;
+    line-height: 300%;
+    text-align: right;
 }
 
 .carousel-caption {
@@ -464,11 +476,17 @@ p{
     bottom: 0;
     left: 0;
     padding: 15px;
-    background: #333333;
     background: rgba(0, 0, 0, 0.75);
     margin-bottom: 0px;
     padding-bottom: 30px;
 }
+
+/* The following class defines the height of the carousel */
+.carousel-height
+{
+    height: 450px;
+}
+
 .carousel-caption p {
     margin-bottom: 0;
 }
