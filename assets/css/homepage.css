@@ -554,6 +554,10 @@ a
 
 }
 
+.social-media-icons li{
+    display: inline-block;
+}
+
 .page-intro h2{
     font-family: 'Muli', sans-serif ,Arial,sans-serif;
     line-height: 1.3em;
