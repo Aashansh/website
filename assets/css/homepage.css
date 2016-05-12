@@ -1,5 +1,9 @@
 body{
 	background-color:#CCCCCC;
+    font-family: 'Muli', sans-serif ,Arial,sans-serif;
+    line-height: 1.3em;
+    font-size: 15px;
+    color: #333;
 }
 
 .Aashansh-Brandname {
@@ -19,9 +23,14 @@ body{
     float: left;
 }
 
-@media (max-width: 768px){
+
+
+@media (max-width: 767px){
     .Aashansh-Header-logo {
         width: 40px;
+    }
+    .nav {
+        background: #ffffff;
     }
 }
 
@@ -99,8 +108,7 @@ body{
 }
 
 .wrapper .header {
-	height: 600px;
-    padding-top: 100px;
+	height: auto;
     background-size: cover;
     background-position: center center;
 }
@@ -177,9 +185,6 @@ footer li a{
 
 .wrapper{
     padding-top: 100px;
-}
-.section {
-  padding-bottom: 70px;
 }
 
 .main {
@@ -504,11 +509,13 @@ a
 }
 
 /* The following class defines the height of the carousel */
-.carousel-height
-{
-    height: 450px;
-}
 
+.carousel-height {
+    max-height: 600px;
+}
+.carousel-img {
+    max-height: 450px;
+}
 .carousel-caption p {
     margin-bottom: 0;
 }
@@ -537,6 +544,7 @@ a
 	.carousel-indicators {
 	    bottom: 0px;
 	}
+
 
 }
 
@@ -638,4 +646,25 @@ a
 
 .student-detaillist{
     padding: 10%;
+}
+
+.header-img {
+    width: 90%;
+    margin-left:5%;
+    background: transparent;
+    max-height: 450px; 
+}
+
+.Page-Heading h4{
+    font-family: 'Muli', sans-serif ,Arial,sans-serif;
+    line-height: 1.3em;
+    color: #cf0300;
+}
+
+.Page-Heading h5{
+    color: rgb(90, 176, 110);
+}
+
+.Page-Heading p{
+    line-height: 22px;
 }
