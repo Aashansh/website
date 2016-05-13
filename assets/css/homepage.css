@@ -719,6 +719,7 @@ a
 
 .value-img{
     max-height: 300px;
+    padding: 30px;
 }
 
 .card-content p{
@@ -729,6 +730,9 @@ a
     height:500px;
 }
 
+.card .value-card-content{
+    padding: 10px;
+}
 .Model-points{
     list-style-type: square;
 }
@@ -791,4 +795,25 @@ a
 
 #PrintAndMediaDropdown:hover .dropdown-menu{
     display: block;
+}
+
+.dropdown-toggle a{
+    color: red;
+}
+
+.contactus-icon{
+    text-align: left;
+    padding: 0px;
+}
+
+.contactus-details{
+    margin-bottom: 20px;
+}
+
+.contactus-icon a{
+    color:blue;
+}
+
+.videos-row {
+    margin-bottom: 30px;
 }
