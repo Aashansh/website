@@ -783,3 +783,12 @@ a
     padding-top: 5px;
     padding-bottom: 5px;
 }
+
+
+#AboutUsDropdown:hover .dropdown-menu {
+    display: block;
+}
+
+#PrintAndMediaDropdown:hover .dropdown-menu{
+    display: block;
+}
