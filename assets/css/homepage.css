@@ -700,3 +700,15 @@ a
     box-shadow: none;
     background: transparent;
 }
+
+.value-img{
+    max-height: 300px;
+}
+
+.card-content p{
+    padding-top: 10px;
+}
+
+.values-card{
+    height:500px;
+}
