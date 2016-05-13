@@ -30,6 +30,16 @@ body{
     }
 }
 
+@media (max-width: 768px){
+    .navbar .navbar-nav .open .dropdown-menu > li > a {
+        color: inherit;
+        text-align: center;
+    }
+    .navbar .navbar-nav .open .dropdown-menu > li > a:hover {
+        color: inherit;
+    }
+}
+
 .navbar{
     height: 100px;
 }
