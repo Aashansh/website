@@ -751,3 +751,35 @@ a
 .card-panel-body {
     margin-top: 0px;
 }
+
+.partner-img-container{
+    display: inline-block;
+    max-width: 200px;
+    padding: 10px 10px 10px 10px;
+
+}
+.partner-img-container:hover {
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15);    
+}
+.partner-img{
+    max-height: 75px;
+    max-width: 90%;
+}
+.partner-heading{
+    text-align: center;
+    font-weight: 900;
+}
+
+.partner-images{
+    margin-bottom:30px;
+}
+
+.partner-panel{
+    margin-bottom: 0px;
+
+}
+
+.partner-panel .panel-body{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
