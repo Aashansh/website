@@ -712,3 +712,26 @@ a
 .values-card{
     height:500px;
 }
+
+.Model-points{
+    list-style-type: square;
+}
+
+.Model-points li{
+    list-style-type: square;
+}
+
+.card-panel-heading {
+    margin:0px;
+    padding-top:5px;
+    padding-bottom:5px;
+}
+.card-panel-heading h5{
+    font-size: 20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.card-panel-body {
+    margin-top: 0px;
+}
