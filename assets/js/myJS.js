@@ -7,9 +7,9 @@ $(document).ready(function(){
   $(window).scroll(function() { 
     if ($(document).scrollTop() > 50) { 
       logo.classList.add('Aashansh-Header-logo-small');
-      $(".navbar-fixed-top").css("WebkitTransitionDuration","2s");
-      $(".Aashansh-Brandname").css("WebkitTransitionDuration","2s");
-      $(".Aashansh-Header-logo").css("WebkitTransitionDuration","2s");
+      $(".navbar-fixed-top").css("WebkitTransitionDuration","0.5s");
+      $(".Aashansh-Brandname").css("WebkitTransitionDuration","0.5s");
+      $(".Aashansh-Header-logo").css("WebkitTransitionDuration","0.5s");
       $(".navbar-fixed-top").css("background-color", "#ffffff");
       $(".navbar-fixed-top").css("z-index", "16");
       $(".navbar-fixed-top").css("padding", "0px");
