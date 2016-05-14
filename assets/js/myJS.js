@@ -2,6 +2,60 @@ var transparent = true;
 var transparentDemo = true;
 var logo = document.getElementsByClassName('Aashansh-Header-logo')[0];
 
+var index ;
+var imageCount;
+var startindex;
+var endindex;
+
+$(document).ready(function(){
+  var flag=0;
+  $('.thumb').click(function(){
+      imageCount = $(this).parent().children().length;
+      startindex = $('.thumb').index($(this).parent().children()[0]);
+      endindex = startindex + imageCount;
+      index = $('.thumb').index($(this));
+      var src = $(this).attr('data-src');
+      $('.popImg').attr('src', src);
+      $('#popUp').fadeIn();
+      flag=1;  
+  });
+
+  $('.next').click(function(e){
+      e.preventDefault();
+      if (index < endindex-1){
+          index += 1;
+      }
+      else if (index == endindex-1){
+        index = startindex;
+      }
+      var nextElement= $('.thumb')[index];
+      var src = $(nextElement).attr('data-src');
+      $('.popImg').attr('src', src);
+      flag=1;
+  });
+
+  $('.prev').click(function(e){
+      e.preventDefault();
+      if(index > startindex){
+          index -= 1;
+      }
+      else if(index==startindex){
+        index = endindex-1;
+      }
+      var nextElement= $('.thumb')[index];
+      var src = $(nextElement).attr('data-src');
+      $('.popImg').attr('src', src);
+      flag=1;
+  });
+
+  $('.close').click(function(e){
+    e.preventDefault();
+    $("#popUp").fadeOut();
+  });
+  
+
+});
+
 //JS For Navbar Switch
 $(document).ready(function(){
   $(window).scroll(function() { 
@@ -55,3 +109,5 @@ function hideDiv() {
    document.getElementById('welcomeDiv').style.display = "none";
    document.getElementById('Show-about-us').style.display = "block";
 }
+
+
