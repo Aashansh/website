@@ -700,6 +700,7 @@ a
     height: 40px;
     padding-top: 10px;
     padding-bottom: 10px;
+
 }
 .nav-card {
     margin: 0px 30px 0px;
@@ -931,3 +932,29 @@ a
 .card-panel-gallery .row{
     width: 100%;
 }
+
+@media(max-width: 768px){
+    .secondary-navbar li{
+        z-index: 50;
+        background: black;
+
+    }
+
+    .secondary-navbar li a{
+        z-index: 50;
+    }
+
+}
+
+.secondary-navbar-button{
+    margin: 0px;
+    margin-top: 5px;
+    padding-top: 0px;
+    padding-bottom:0px; 
+    border: 1px solid white;
+}
+
+.secondary-navbar{
+    margin-right:15px;
+}
+
