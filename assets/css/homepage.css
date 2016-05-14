@@ -789,13 +789,14 @@ a
     padding-bottom: 5px;
 }
 
+@media(min-width: 768px){
+    #AboutUsDropdown:hover .dropdown-menu {
+        display: block;
+    }
 
-#AboutUsDropdown:hover .dropdown-menu {
-    display: block;
-}
-
-#PrintAndMediaDropdown:hover .dropdown-menu{
-    display: block;
+    #PrintAndMediaDropdown:hover .dropdown-menu{
+        display: block;
+    }
 }
 
 .dropdown-toggle a{
