@@ -1025,6 +1025,9 @@ a
     color: black;
 }
 
+.teal-card{
+    height: 200px;
+}
 @media(max-width: 900px){
     .row {
         margin-left: 0px;
@@ -1035,4 +1038,19 @@ a
         margin-left: -15px;
         margin-right: -15px;
     }
+
+    .teal-card {
+        height: 250px;
+    }
+}
+
+@media(max-width: 500px){
+    .teal-card {
+        height: 300px;
+    }   
+}
+@media(max-width: 360px){
+    .teal-card {
+        height: 500px;
+    }   
 }
