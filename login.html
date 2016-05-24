@@ -22,17 +22,138 @@
 
   <!--Body Structure Begins-->
     <body background="assets/img/bg.png">
-        <div class="login-page">
+        <!--navbar-->
+        <nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll">
+            <div class="container" style="height:inherit">
+                <div class="navbar-header" style="overflow: visible; height: inherit;">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-index">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i style="color:black;" class="fa fa-bars" aria-hidden="true"></i>
+                    </button>
+                    <a href="index.html">
+                        <div class="Aashansh-Header-logo-container">
+                            <div class="Aashansh-Header-logo">
+                                <img src="assets/img/logo2.png">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="navigation-index">
+                    <!--Navigation Bar Items-->
+                    <ul class="nav navbar-nav navbar-right">
+                        <li id="AboutUsDropdown">
+                            <span class="btn btn-dropdown dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <font color="red">
+                                    About Us
+                                </font>
+                            </span>
 
-            <div class="form">
-              <h1>Login</h1>
-                <form class="login-form">
-                    <input type="text" placeholder="username"/>
-                    <input type="password" placeholder="password"/>
-                    <a class="btn button" href="index.html">login</a>
-                    <p class="message">Not registered? <a href="signup.html">Create an account</a></p>
-                </form>
+                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="Whereitallbegan.html">Where it all began</a></li>
+                                <li><a href="OurModels.html">Our Model</a></li>
+                                <li><a href="OurPartners.html">Our Partners</a></li>
+                                <li><a href="CaseStories.html">Case Stories</a></li>
+                                <li><a href="OurValues.html">Our Values</a></li>
+                                <li><a href="OurTeam.html">The Team</a></li>
+                            </ul>
+                        </li>
+                        <li id="PrintAndMediaDropdown">
+                            <span class="btn btn-dropdown dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <font color="purple">
+                                    Print & Media
+                                </font>
+                            </span>
+
+                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="Gallery.html">Gallery</a></li>
+                                <li><a href="Videos.html">Videos</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"class="navbar-items btn">
+                                <font color="blue">
+                                    News
+                                </font>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="ContactUs.html"class="navbar-items btn">
+                                <font color="green">
+                                    Contact Us
+                                </font>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-items btn" data-toggle="modal" data-target="#login">
+                                <font color="brown">
+                                    Login
+                                </font>
+                            </a>
+                        </li>
+                    </ul>
+                    <!--End Navigation Bar Items-->
+                </div>
+            
             </div>
+        </nav>
+
+        <div class="wrapper">
+            <div class="header">
+                <div class="section nav-card">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <nav class="carousel-nav navbar-collapse">  
+                                <div class="container" style="height:inherit">
+                                    <button type="button" class="navbar-toggle secondary-navbar-button" data-toggle="collapse" data-target="#navigation-index2">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <i style="color:white" class="fa fa-sort-desc" aria-hidden="true"></i>
+                                    </button>
+                                    <div class="collapse navbar-collapse secondary-navbar-collapse" style="z-index:20" id="navigation-index2">
+                                        <ul class="secondary-navbar nav navbar-nav navbar-right">
+                                            <li><a href="">Student</a></li>
+                                            <li><a href="">IT Freelancer</a></li>
+                                            <li><a href="">Micro-Finance Provider</a></li>
+                                            <li><a href="">Employer</a></li>
+                                            <li><a href="">Support Us</a></li>
+                                            <li><a href="https://aashanshblog.wordpress.com/" target="_blank">Blog</a></li>
+                                        </ul>
+                                    </div>
+                                    
+                                </div>
+                            </nav>      
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="login-page">
+
+                <div class="form">
+                    <h1>Login</h1>
+                    <form class="login-form">
+                        <input type="text" placeholder="username"/>
+                        <input type="password" placeholder="password"/>
+                        <a class="btn button" href="index.html">login</a>
+                        <p class="message">Not registered? <a href="signup.html">Create an account</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <center>
+                <div class="modal-dialog" style="max-width:400px">
+                    <div class="modal-content">
+                        
+                        <div class="modal-body">
+                            <a type="button" class="btn btn-primary btn-block" href="login.html">Login</a>
+                            <a type="button" class="btn btn-success btn-block" href="signup.html">Register</a>
+                        </div>
+                        <div class="modal-footer">
+                            <a data-dismiss="modal">Close</a>
+                        </div>
+                    </div>
+                </div>
+            </center>
         </div>
 
     </body>
