@@ -22,17 +22,7 @@ Forms.controller('Login',['$scope','$window',function($scope,$window){
     	if (val){
     		login_pword = val;
     	}
-    	if (login_pword.length > 6) {
-    		if(flag_uname===1){
-    			$scope.link = "index.html";
-			}
-    		$scope.error_pword = "";
-    		flag_pword = 1;
-    	}else{
-    		$scope.error_pword = "Password Must be more than 6 characters";
-    		$scope.link = "login.html";
-    		flag_pword = 0;
-    	}
+    	
 
     });
 
