@@ -138,7 +138,7 @@
                         <p style="font-size:12px;color:red">{{error_pword}}</p>
                         <input type="email" ng-model="email" placeholder="email address"/>
                         <p style="font-size:12px;color:red">{{error_email}}</p>
-                        <a class="btn button" href="{{this.link}}">create</a>
+                        <a class="btn button" ng-click="validate()" href="{{this.link}}">create</a>
                         <p class="message">Already registered? <a href="login.html">Sign In</a></p>
                     </form>
                 </div>
