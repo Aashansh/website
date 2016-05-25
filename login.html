@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" >
   <!--Head Structure Begin-->
   <head>
     <meta charset="utf-8" />
@@ -21,7 +21,7 @@
   <!--Head Structure End-->
 
   <!--Body Structure Begins-->
-    <body background="assets/img/bg.png">
+    <body background="assets/img/bg.png" ng-app="Forms">
         <!--navbar-->
         <nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll">
             <div class="container" style="height:inherit">
@@ -127,12 +127,14 @@
             </div>
             <div class="login-page">
 
-                <div class="form">
+                <div class="form" ng-controller="Login">
                     <h1>Login</h1>
                     <form class="login-form">
-                        <input type="text" placeholder="username"/>
-                        <input type="password" placeholder="password"/>
-                        <a class="btn button" href="index.html">login</a>
+                        <input type="text" ng-model="username" placeholder="username"/>
+                        <p style="font-size:12px;color:red">{{this.error_uname}}<p>
+                        <input type="password" ng-model="password" placeholder="password"/> 
+                        <p style="font-size:12px;color:red">{{this.error_pword}}<p>
+                        <a class="btn button" href="{{this.link}}">login</a>
                         <p class="message">Not registered? <a href="signup.html">Create an account</a></p>
                     </form>
                 </div>
@@ -163,4 +165,7 @@
     <script src="assets/js/jquery.min.js" type="text/javascript"></script>
     <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="assets/js/myJS.js" type="text/javascript"></script>    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js" type="text/javascript"></script>
+    <script src="assets/js/angular_myJS.js" type="text/javascript"></script> 
+
 </html>

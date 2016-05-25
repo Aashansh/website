@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="Forms">
   <!--Head Structure Begin-->
   <head>
     <meta charset="utf-8" />
@@ -21,7 +21,7 @@
   <!--Head Structure End-->
 
   <!--Body Structure Begins-->
-    <body background="assets/img/bg.png">
+    <body background="assets/img/bg.png" >
         <!--navbar-->
         <nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll">
             <div class="container" style="height:inherit">
@@ -128,14 +128,17 @@
 
 
 
-            <div class="login-page">
-                <div class="form">
+            <div class="login-page" >
+                <div class="form" ng-controller="Signup">
                     <h1>Register</h1>
                     <form class="register-form">
-                        <input type="text" placeholder="name"/>
-                        <input type="password" placeholder="password"/>
-                        <input type="text" placeholder="email address"/>
-                        <a class="btn button" href="login.html">create</a>
+                        <input type="text" ng-model="username" placeholder="username"/>
+                        <p style="font-size:12px;color:red">{{error_uname}}</p>
+                        <input type="password" ng-model="password" placeholder="password"/>
+                        <p style="font-size:12px;color:red">{{error_pword}}</p>
+                        <input type="email" ng-model="email" placeholder="email address"/>
+                        <p style="font-size:12px;color:red">{{error_email}}</p>
+                        <a class="btn button" href="{{this.link}}">create</a>
                         <p class="message">Already registered? <a href="login.html">Sign In</a></p>
                     </form>
                 </div>
@@ -166,4 +169,7 @@
     <script src="assets/js/jquery.min.js" type="text/javascript"></script>
     <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="assets/js/myJS.js" type="text/javascript"></script>    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js" type="text/javascript"></script>
+    <script src="assets/js/angular_myJS.js" type="text/javascript"></script> 
+
 </html>
