@@ -16,7 +16,7 @@ profileRouter.route('/')
     });
 })
 
-.post(Verify.verifyOrdinaryUser, Verify.verifyAdmin, function (req, res, next) {
+.post(Verify.verifyOrdinaryUser, function (req, res, next) {
     Profiles.create(req.body, function (err, profile) {
         if (err) throw err;
         console.log('Created the Profile');
