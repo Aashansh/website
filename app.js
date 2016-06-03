@@ -7,8 +7,11 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-
 var config = require('./config');
+var fs = require('fs');
+var multer = require('multer');
+
+
 
 mongoose.connect(config.mongoUrl);
 var db = mongoose.connection;
@@ -24,6 +27,9 @@ var profileRouter = require('./routes/profileRouter');
 
 var app = express();
 
+
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
@@ -33,6 +39,25 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+app.use(function (req, res, next) {
+
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8000');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,x-access-token');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
+});
 
 app.get('/login', function(req, res) {
     res.sendFile(path.join(__dirname, 'public/login.html'));
@@ -83,6 +108,7 @@ app.use(function(err, req, res, next){
   });
   return;
 });
+
 
 
 module.exports = app;

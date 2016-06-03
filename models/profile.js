@@ -1,5 +1,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var fs = require('fs');
+var multer = require('multer');
+
 
 //mongoose schema
 var profileSchema = new Schema({

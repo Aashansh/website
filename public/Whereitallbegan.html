@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="Forms">
 	<!--Head Structure Begin-->
 	<head>
 		<meta charset="utf-8" />
@@ -21,7 +21,7 @@
 	<!--Head Structure End-->
 
 	<!--Body Structure Begins-->
-	<body background="assets/img/bg.png">
+	<body background="assets/img/bg.png" ng-controller="profile">
 
 		<!--navbar-->
 		<nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll">
@@ -85,11 +85,16 @@
 							</a>
 						</li>
 						<li>
-							<a class="navbar-items btn" data-toggle="modal" data-target="#login">
+							<a ng-show="loggedin==false" class="navbar-items btn" data-toggle="modal" data-target="#login">
 								<font color="brown">
 									Login
 								</font>
 							</a>
+							<a ng-show="loggedin" ng-href="Profile.html">
+                                <font color="brown">
+                                    {{username}}
+                                </font>
+                            </a>
 						</li>
 	    			</ul>
 	    			<!--End Navigation Bar Items-->
@@ -245,7 +250,12 @@
 	</body>
 	<!--Body Structure Ends-->
 	<!--JS Files-->
+	<!--JS Files-->
 	<script src="assets/js/jquery.min.js" type="text/javascript"></script>
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="assets/js/mdb.min.js" type="text/javascript"></script>
 	<script src="assets/js/myJS.js" type="text/javascript"></script>	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js" type="text/javascript"></script>
+	<script src="assets/js/angular_myJS.js" type="text/javascript"></script>	
+	
 </html>

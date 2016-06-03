@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 
 var Profiles = require('../models/profile');
 var Verify = require('./verify');
-
+var fs = require('fs');
 var profileRouter = express.Router();
 profileRouter.use(bodyParser.json());
 
@@ -25,11 +25,11 @@ profileRouter.route('/')
         res.writeHead(200, {
             'Content-Type': 'text/plain'
         });
-        res.end('Added the Profile with id: ' + id);
+        res.end('Added the Profile with id: ' + id + 'request=' + req.body.image);
     });
 })
 
-.delete(Verify.verifyOrdinaryUser, Verify.verifyAdmin, function (req, res, next) {
+.delete(function (req, res, next) {
     Profiles.remove({}, function (err, resp) {
         if (err) throw err;
         res.json(resp);
@@ -55,7 +55,7 @@ profileRouter.route('/:profileId')
     });
 })
 
-.delete(Verify.verifyAdmin, function (req, res, next) {
+.delete(function (req, res, next) {
     Profiles.findByIdAndRemove(req.params.profileId, function (err, resp) {        
     	if (err) throw err;
         res.json(resp);

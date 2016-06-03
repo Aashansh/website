@@ -1,6 +1,36 @@
 var Forms = angular.module('Forms',[]);
 
-Forms.controller('Login',['$scope','$window',function($scope,$window){
+Forms.service('authService', ['$window',function ($window) {
+        var service = {
+            store: store,
+            retrieve: retrieve,
+            clear: clear,
+            clearAll: clearAll
+        };
+
+        return service;
+
+
+        function store(key, value) {
+            $window.sessionStorage.setItem(key, angular.toJson(value, false));
+        }
+
+        function retrieve(key) {
+            return angular.fromJson($window.sessionStorage.getItem(key));
+        }
+
+        function clear(key) {
+            $window.sessionStorage.removeItem(key);
+        }
+
+        function clearAll() {
+            $window.sessionStorage.clear();
+        }
+
+
+    }]);
+
+Forms.controller('Login',['$scope','$window','$http', 'authService',function($scope,$window,$http,authService){
 	
 	var login_uname="";
 	var login_pword="";
@@ -8,8 +38,8 @@ Forms.controller('Login',['$scope','$window',function($scope,$window){
 	var flag_pword=0;
 	var error_uname = "";
 	var error_pword = "";
-
-	$scope.link = "index.html";
+    $scope.error_msg = "";
+    $scope.link = "";
 	$scope.$watch('username', function(val) {
         if (val) {
         	console.log($scope.link);
@@ -25,6 +55,26 @@ Forms.controller('Login',['$scope','$window',function($scope,$window){
     	
 
     });
+
+    $scope.PostMethod = function(){
+        $http({
+        method: 'POST',
+        url: 'http://localhost:3000/users/login',
+        data: {
+        "username" : login_uname,
+        "password" : login_pword
+        }
+        }).then(function successCallback(response) {
+            window.location = "Profile.html";
+            authService.store(0,response.data.token);
+            authService.store(1,login_uname);
+            console.log(response.data.token);
+        }, function errorCallback(response) {
+            $scope.error_msg = "Login Failed";
+            $scope.link = "";
+        });    
+    }
+    
 
     
 
@@ -115,3 +165,59 @@ Forms.controller('Signup',['$scope','$window',function($scope,$window){
     
 
 }]);
+
+Forms.controller('profile', [ '$scope','authService','$http', function($scope, authService,$http) {
+    $scope.loggedin=false;
+    $scope.id = authService.retrieve(0);
+    $scope.username = authService.retrieve(1);
+    $scope.profilesubmitted = false;
+    $scope.imgurl;
+    $scope.lookingfor;
+    $scope.skills;
+    $scope.course;
+    if($scope.username){
+        $scope.loggedin = true;
+    }
+
+    $scope.Submit = function(){
+        console.log($scope.username);
+      $http({
+        method: 'POST',
+        url: 'http://localhost:3000/profiles',
+        headers: {
+              'x-access-token': $scope.id
+            },
+        data:{
+          "name" : $scope.username,
+          "image" : $scope.imgurl,
+          "course": $scope.course,
+          "skills":$scope.skills,
+          "lookingfor":$scope.lookingfor
+        }
+        }).then(function successCallback(response) {
+            window.location = "Profile.html";
+        }, function errorCallback(response) {
+            
+        });
+    }
+
+    $scope.getImg = function(){
+        console.log($scope.imgurl);
+    }
+
+    $http({
+        method: 'GET',
+        url: 'http://localhost:3000/profiles'
+        }).then(function successCallback(response) {
+            console.log(response.data.length);
+            for(i=0;i<response.data.length;i++){
+                if(response.data[i].name==$scope.username){
+                    $scope.profilesubmitted = true;
+                    $scope.user = response.data[i];
+                }
+            }
+        }, function errorCallback(response) {
+            
+        });    
+}]);
+
