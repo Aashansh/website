@@ -159,21 +159,24 @@ Forms.controller('Signup',['$scope','$window','$http',function($scope,$window,$h
         }
 
         if($scope.flag===1){
-            console.log(signup_uname);
-            console.log(signup_pword);
-            console.log(signup_email);
+            $scope.uname = signup_uname;
+            $scope.pword = signup_pword;
+            $scope.email = signup_email;  
 
           $http({
             method: 'POST',
             url: 'http://localhost:3000/users/register',
             data:{
-                "username" : signup_uname,
-                "password" : signup_pword
+                "username" : $scope.uname,
+                "password" : $scope.pword,
+                "email" : $scope.email
             }
             }).then(function successCallback(response) {
-                console.log(response);
+                window.location = "login.html"
             }, function errorCallback(response) {
-                console.log(response);
+                if(response.data.err.name==="UserExistsError"){
+                    $scope.error_uname = response.data.err.message;
+                }
             });
         }
 
