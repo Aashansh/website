@@ -195,6 +195,19 @@ Forms.controller('Profiles', [ '$scope','authService','$http','authService', fun
     if($scope.username){
         $scope.loggedin = true;
     }
+    $scope.admin = false;
+        $http({
+        method: 'GET',
+        url: 'http://localhost:3000/users'
+        }).then(function successCallback(response) {
+            for(i=0;i<response.data.length;i++){
+                if(response.data[i].username==$scope.username && response.data[i].admin==true){
+                    $scope.admin = true;
+                }
+            }
+        }, function errorCallback(response) {
+            
+        });
 
         $http({
         method: 'GET',
@@ -219,6 +232,53 @@ Forms.controller('Profiles', [ '$scope','authService','$http','authService', fun
         }, function errorCallback(response) {
             
         });
+}]);
+
+Forms.controller('Users', [ '$scope','authService','$http','authService', function($scope, authService,$http,authService) {
+    $scope.loggedin=false;
+    $scope.id = authService.retrieve(0);
+    $scope.username = authService.retrieve(1);
+    $scope.profilesubmitted = false;
+    if($scope.username){
+        $scope.loggedin = true;
+    }
+
+    $scope.admin = false;
+        $http({
+        method: 'GET',
+        url: 'http://localhost:3000/users'
+        }).then(function successCallback(response) {
+            for(i=0;i<response.data.length;i++){
+                if(response.data[i].username==$scope.username && response.data[i].admin==true){
+                    $scope.admin = true;
+                }
+            }
+        }, function errorCallback(response) {
+            
+        });
+
+        $http({
+        method: 'GET',
+        url: 'http://localhost:3000/users'
+        }).then(function successCallback(response) {
+            $scope.users = response.data;
+        }, function errorCallback(response) {
+            
+        });   
+    $scope.deleteUser = function(id){
+        $http({
+        method: 'DELETE',
+        url: 'http://localhost:3000/users/' + id,
+        headers: {
+              'x-access-token': $scope.id
+            },
+        }).then(function successCallback(response) {
+            window.location = "Users.html";
+        }, function errorCallback(response) {
+            
+        });
+    }
+
 }]);
 
 Forms.controller('profile', [ '$scope','authService','$http', function($scope, authService,$http) {
