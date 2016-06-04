@@ -69,13 +69,7 @@
 							    <li><a href="Videos.html">Videos</a></li>
 							</ul>
 						</li>
-						<li>
-							<a href="#"class="navbar-items btn">
-								<font color="blue">
-									News
-								</font>
-							</a>
-						</li>
+						
 						<li>
 							<a href="ContactUs.html"class="navbar-items btn">
 								<font color="green">
@@ -83,12 +77,16 @@
 								</font>
 							</a>
 						</li>
-                        <li ng-show="loggedin==false" >
-                            <a class="navbar-items btn" data-toggle="modal" data-target="#login">
+                        <li ng-show="loggedin==false" id="PrintAndMediaDropdown">
+                            <span class="btn btn-dropdown dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 <font color="brown">
                                     Login
                                 </font>
-                            </a>
+                            </span>
+                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="login.html">Login</a></li>
+                                <li><a href="signup.html">Register</a></li>
+                            </ul>
                         </li>
                         <li ng-show="loggedin" id="PrintAndMediaDropdown">
                             <span class="btn btn-dropdown dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
