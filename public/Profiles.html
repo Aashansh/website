@@ -5,7 +5,7 @@
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<link rel="icon" type="image/png" href="assets/img/logo2.png">
-		<title>Aashansh | Case Stories</title>
+		<title>Aashansh | Profiles</title>
 
 		<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
@@ -20,7 +20,7 @@
 	</head>
 	<!--Head Structure End-->
 	<!-- Body Structure Begins -->
-	<body background="assets/img/bg.png" ng-controller="profile">
+	<body background="assets/img/bg.png" ng-controller="Profiles">
 
 		<!--navbar-->
 		<nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll">
@@ -145,57 +145,39 @@
 	    				
 	    				<!-- Case Stories Header -->
 	    				<div class="row page-intro" style="text-align:center">
-	    					<h2>Case Stories</h2>
-	    					<div class="row">
-		    					<div class="col-md-10 col-md-offset-1">
-		    						<p>Pavement dwellers refers to dwellings built on the footpaths/pavements of city streets, which use the walls or fences which separate building compounds from the pavement and street outside. Materials include cloth, corrugated iron, cardboard, wood, plastic, and sometimes also bricks or cement.</p>
-
-									<p>According to a survey and our experience at Aashansh, pavement dwellers are primarily first generation migrants who moved to Mumbai sometimes 30 to 50 years ago, and who have lived on the pavement of public roadways ever since. They are completely invisible as far as local, state, and national policies are concerned.</p>
-
-									<p>It is seen that approximately half of the pavement dwellers to be from the poorest districts in the state of Maharashtra, with the other half came from the poorest parts of wider India. Many came as victims of drought, famine, earthquakes or religious persecution or riots. Others came as a result of a complete breakdown in their livelihoods where they had been living. Pavement dwellers migrate to Mumbai hoping to capitalize on the wealth and job opportunities that the city offers. They are typically forward-thinking, seeking to build lives in the city that give the next generation better opportunities than would have been possible in the village.</p>
-
-									<p>Here are some of our students from the community of street/payment dwellers who are either hoping for a better living or have just lost hopes in the past years.</h4>	
-	    						</div>
-								
-	    					</div>
+	    					<h2>Profiles</h2>
+	    					
 	    				</div>
-	    				<!-- End Case Stories Header -->
 	    				
 	    				<br><br>
 
-	    				<!-- Cards:CASE STORIES -->
 	    				<div class="col-md-10 col-md-offset-1">
-	    					<div class="row">
-						        <!-- Card Scope Start -->
-						        <div class="col-md-4">
+	    					    <!-- Card Scope Start -->
+						        <div class="col-md-4" ng-repeat="profile in profiles">
 			        		        <!-- Card Start -->
 			                			<div class="card hoverable " data-toggle="modal" data-target="#Modal-NehaJaiswal">
-			                    			<div class="cover" style="background-color:#333333">
-							                
-							                </div>
-							                <div class="user">
-					                            <img class="img-circle" src="assets/img/CaseStories/Neha_Jaiswal.jpg" alt="Neha Jaiswal"/>
+			                    			
+							                <div class="user" style="border-radius:0;height:auto;margin:0px;width:100%">
+					                            <img src="{{profile.image}}" alt="{{profile.image}}"/>
 							                </div>
 					                        <div class="content">
 					                            <div class="main">
-					                                <h3 class="name">Neha Jaiswal</h3>
-					                                <p class="text-center">A punch-line or something.</p>
-					                                <ul class="student-detaillist">
-					                                	<li>
-					                                		School Name:
+					                                <h3 class="name">{{profile.name}}</h3>
+					                                <ul class="student-detaillist" style="text-align:center;padding-top:12px;padding-bottom:12px;">
+					                                	<li style="margin-bottom:10px;">
+					                                		<label style="margin-bottom:0">Course Enrolled In:</label><br>
+					                                		<span >{{profile.course}}</span>
 					                                	</li>
-					                                	<li>
-					                                		Course Undertaken:
+					                                	<li style="margin-bottom:10px;">
+					                                		<label style="margin-bottom:0">Skills:</label><br>
+					                                		<span >{{profile.skills}}</span>
 					                                	</li>
-					                                	<li>
-					                                		Age:
+					                                	<li style="margin-bottom:10px;">
+					                                		<label style="margin-bottom:0">Job Profile looking for</label>
+					                                		<br>
+					                                		<span>{{profile.lookingfor}}</span>
 					                                	</li>
-					                                	<li>
-					                                		Location:
-					                                	</li>
-					                                	<li>
-					                                		Dream:
-					                                	</li>
+					                                	
 					                                </ul>
 					                            </div>					                            
 					                        </div>
@@ -203,166 +185,7 @@
 			                		<!-- Card End -->	
 	                    		</div>
 	                    		<!-- Card Scope End -->
-
-	                    		<!-- Card Scope Start -->
-						        <div class="col-md-4">
-			        		        <!-- Card Start -->
-			                			<div class="card hoverable " data-toggle="modal" data-target="#Modal-AbhishekPrajapati">
-			                    			<div class="cover" style="background-color:#333333">
-							                
-							                </div>
-							                <div class="user">
-					                            <img class="img-circle" src="assets/img/CaseStories/Abhishek_Prajapati.jpg" alt="Abhishek Prajapati"/>
-							                </div>
-					                        <div class="content">
-					                            <div class="main">
-					                                <h3 class="name">Abishekh Prajapati</h3>
-					                                <p class="text-center">A punch-line or something.</p>
-					                                <ul class="student-detaillist">
-					                                	<li>
-					                                		School Name:
-					                                	</li>
-					                                	<li>
-					                                		Course Undertaken:
-					                                	</li>
-					                                	<li>
-					                                		Age:
-					                                	</li>
-					                                	<li>
-					                                		Location:
-					                                	</li>
-					                                	<li>
-					                                		Dream:
-					                                	</li>
-					                                </ul>
-
-					                            </div>					                            
-					                        </div>
-			                			</div>
-			                		<!-- Card End -->	
-	                    		</div>
-	                    		<!-- Card Scope End -->
-
-	                    		<!-- Card Scope Start -->
-						        <div class="col-md-4">
-			        		        <!-- Card Start -->
-			                			<div class="card hoverable " data-toggle="modal" data-target="#Modal-Amit">
-			                    			<div class="cover" style="background-color:#333333">
-							                
-							                </div>
-							                <div class="user">
-					                            <img class="img-circle" src="assets/img/CaseStories/Amit.jpg" alt="Amit"/>
-							                </div>
-					                        <div class="content">
-					                            <div class="main">
-					                                <h3 class="name">Amit</h3>
-					                                <p class="text-center">A punch-line or something.</p>
-					                                <ul class="student-detaillist">
-					                                	<li>
-					                                		School Name:
-					                                	</li>
-					                                	<li>
-					                                		Course Undertaken:
-					                                	</li>
-					                                	<li>
-					                                		Age:
-					                                	</li>
-					                                	<li>
-					                                		Location:
-					                                	</li>
-					                                	<li>
-					                                		Dream:
-					                                	</li>
-					                                </ul>
-					                            </div>					                            
-					                        </div>
-			                			</div>
-			                		<!-- Card End -->	
-	                    		</div>
-	                    		<!-- Card Scope End -->
-		                	</div>
-		                	<!-- End Of Row -->
-	    					
-	    					<!-- Row2 Start -->
-	    					<div class="row">
-						        <!-- Card Scope Start -->
-						        <div class="col-md-4 col-md-offset-2">
-			        		        <!-- Card Start -->
-			                			<div class="card hoverable " data-toggle="modal" data-target="#Modal-RoshniJaiswal">
-			                    			<div class="cover" style="background-color:#333333">
-							                
-							                </div>
-							                <div class="user">
-					                            <img class="img-circle" src="assets/img/CaseStories/Roshni_Jaiswal.jpg" alt="Roshni Jaiswal"/>
-							                </div>
-					                        <div class="content">
-					                            <div class="main">
-					                                <h3 class="name">Roshni Jaiswal</h3>
-					                                <p class="text-center">A punch-line or something.</p>
-					                                <ul class="student-detaillist">
-					                                	<li>
-					                                		School Name:
-					                                	</li>
-					                                	<li>
-					                                		Course Undertaken:
-					                                	</li>
-					                                	<li>
-					                                		Age:
-					                                	</li>
-					                                	<li>
-					                                		Location:
-					                                	</li>
-					                                	<li>
-					                                		Dream:
-					                                	</li>
-					                                </ul>
-					                            </div>					                            
-					                        </div>
-			                			</div>
-			                		<!-- Card End -->	
-	                    		</div>
-	                    		<!-- Card Scope End -->
-
-	                    		<!-- Card Scope Start -->
-						        <div class="col-md-4">
-			        		        <!-- Card Start -->
-			                			<div class="card hoverable " data-toggle="modal" data-target="#Modal-Shyam">
-			                    			<div class="cover" style="background-color:#333333">
-							                
-							                </div>
-							                <div class="user">
-					                            <img class="img-circle" src="assets/img/CaseStories/Shyam_Prajapati.jpg" alt="Shyam Prajapati"/>
-							                </div>
-					                        <div class="content">
-					                            <div class="main">
-					                                <h3 class="name">Shyam</h3>
-					                                <p class="text-center">A punch-line or something.</p>
-					                                <ul class="student-detaillist">
-					                                	<li>
-					                                		School Name:
-					                                	</li>
-					                                	<li>
-					                                		Course Undertaken:
-					                                	</li>
-					                                	<li>
-					                                		Age:
-					                                	</li>
-					                                	<li>
-					                                		Location:
-					                                	</li>
-					                                	<li>
-					                                		Dream:
-					                                	</li>
-					                                </ul>
-					                            </div>					                            
-					                        </div>
-			                			</div>
-			                		<!-- Card End -->	
-	                    		</div>
-	                    		<!-- Card Scope End -->
-		                	</div>
-		                	<!-- End Of Row2 -->
-	                	
+	                    	
 	                	</div>
 	                	<!--End of col-md-10 offset-1 -->
 	    			</div>

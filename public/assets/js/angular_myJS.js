@@ -187,6 +187,40 @@ Forms.controller('Signup',['$scope','$window','$http',function($scope,$window,$h
 
 }]);
 
+Forms.controller('Profiles', [ '$scope','authService','$http','authService', function($scope, authService,$http,authService) {
+     $scope.loggedin=false;
+    $scope.id = authService.retrieve(0);
+    $scope.username = authService.retrieve(1);
+    $scope.profilesubmitted = false;
+    if($scope.username){
+        $scope.loggedin = true;
+    }
+
+        $http({
+        method: 'GET',
+        url: 'http://localhost:3000/profiles'
+        }).then(function successCallback(response) {
+            console.log(response.data.length);
+            for(i=0;i<response.data.length;i++){
+                if(response.data[i].name==$scope.username){
+                    $scope.profilesubmitted = true;
+                    $scope.user = response.data[i];
+                }
+            }
+        }, function errorCallback(response) {
+            
+        });   
+
+     $http({
+        method: 'GET',
+        url: 'http://localhost:3000/profiles',
+        }).then(function successCallback(response) {
+            $scope.profiles = response.data;
+        }, function errorCallback(response) {
+            
+        });
+}]);
+
 Forms.controller('profile', [ '$scope','authService','$http', function($scope, authService,$http) {
     $scope.loggedin=false;
     $scope.id = authService.retrieve(0);
