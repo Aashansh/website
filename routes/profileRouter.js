@@ -29,7 +29,7 @@ profileRouter.route('/')
     });
 })
 
-.delete(function (req, res, next) {
+.delete(Verify.verifyOrdinaryUser, Verify.verifyAdmin, function (req, res, next) {
     Profiles.remove({}, function (err, resp) {
         if (err) throw err;
         res.json(resp);
@@ -37,7 +37,7 @@ profileRouter.route('/')
 });
 
 profileRouter.route('/:profileId')
-.get(Verify.verifyOrdinaryUser, function (req, res, next) {
+.get(function (req, res, next) {
     Profiles.findById(req.params.profileId, function (err, profile) {
         if (err) throw err;
         res.json(profile);
@@ -55,7 +55,7 @@ profileRouter.route('/:profileId')
     });
 })
 
-.delete(function (req, res, next) {
+.delete(Verify.verifyOrdinaryUser, Verify.verifyAdmin, function (req, res, next) {
     Profiles.findByIdAndRemove(req.params.profileId, function (err, resp) {        
     	if (err) throw err;
         res.json(resp);
