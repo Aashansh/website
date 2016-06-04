@@ -80,7 +80,7 @@ Forms.controller('Login',['$scope','$window','$http', 'authService',function($sc
 
 }]);
 
-Forms.controller('Signup',['$scope','$window',function($scope,$window){
+Forms.controller('Signup',['$scope','$window','$http',function($scope,$window,$http){
 	
 	var signup_uname="";
 	var signup_pword="";
@@ -88,7 +88,8 @@ Forms.controller('Signup',['$scope','$window',function($scope,$window){
 	var flag_uname=false;
 	var flag_pword=false;;
 	var flag_email=false;
-
+    var error = "";
+    $scope.flag=0;
 	var EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
 
 	$scope.link = "signup.html";
@@ -122,42 +123,59 @@ Forms.controller('Signup',['$scope','$window',function($scope,$window){
     $scope.validate = function(){
         if (signup_uname.length > 4) {
             if(flag_pword===true && flag_email===true){
-                $scope.link = "login.html";
+                $scope.flag=1;
             }
             $scope.error_uname = "";
             flag_uname = true;
         }else{
             $scope.error_uname = "Username Must be more than 4 characters";
-            $scope.link = "#";
+            $scope.flag=0;
             flag_uname = false;
         }
 
         if (signup_pword.length > 6) {
             if(flag_uname===true && flag_email===true){
-                $scope.link = "login.html";
+                $scope.flag=1;
             }
             $scope.error_pword = "";
             flag_pword = true;
         }else{
             $scope.error_pword = "Password Must be more than 6 characters";
-            $scope.link = "#";
+            $scope.flag=0;
             flag_pword = false;
         }
 
         var isMatchRegex = EMAIL_REGEXP.test(signup_email);
         if (isMatchRegex) {
             if(flag_uname===true && flag_pword===true){
-                $scope.link = "login.html";
+                $scope.flag=1;
             }
             $scope.error_email = "";
             flag_email = true;
         }else{
             $scope.error_email = "Invalid Email";
-            $scope.link = "#";
+            $scope.flag=0;
             flag_email = false;
         }
 
+        if($scope.flag===1){
+            console.log(signup_uname);
+            console.log(signup_pword);
+            console.log(signup_email);
 
+          $http({
+            method: 'POST',
+            url: 'http://localhost:3000/users/register',
+            data:{
+                "username" : signup_uname,
+                "password" : signup_pword
+            }
+            }).then(function successCallback(response) {
+                console.log(response);
+            }, function errorCallback(response) {
+                console.log(response);
+            });
+        }
 
 
     }
@@ -178,7 +196,13 @@ Forms.controller('profile', [ '$scope','authService','$http', function($scope, a
     if($scope.username){
         $scope.loggedin = true;
     }
-
+    if(window.location.pathname==="/Profile.html" && $scope.loggedin==false){
+        window.location="login.html";
+    }
+    $scope.signout = function(){
+        authService.clearAll();
+        window.location = window.location;
+    }
     $scope.Submit = function(){
         console.log($scope.username);
       $http({

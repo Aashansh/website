@@ -797,6 +797,10 @@ a
     #PrintAndMediaDropdown:hover .dropdown-menu{
         display: block;
     }
+
+    #UserDropdown:hover .dropdown-menu{
+        display: block;
+    }
 }
 
 .dropdown-toggle a{

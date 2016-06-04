@@ -13,6 +13,7 @@ router.post('/register', function(req, res) {
     User.register(new User({ username : req.body.username }),
       req.body.password, function(err, user) {
         if (err) {
+            console.log(req.body.username);
             return res.status(500).json({err: err});
         }
         passport.authenticate('local')(req, res, function () {

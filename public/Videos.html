@@ -83,18 +83,24 @@
 								</font>
 							</a>
 						</li>
-						<li>
-							<a ng-show="loggedin==false" class="navbar-items btn" data-toggle="modal" data-target="#login">
-								<font color="brown">
-									Login
-								</font>
-							</a>
-							<a ng-show="loggedin" ng-href="Profile.html">
+						<li ng-show="loggedin==false" >
+                            <a class="navbar-items btn" data-toggle="modal" data-target="#login">
+                                <font color="brown">
+                                    Login
+                                </font>
+                            </a>
+                        </li>
+                        <li ng-show="loggedin" id="PrintAndMediaDropdown">
+                            <span class="btn btn-dropdown dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 <font color="brown">
                                     {{username}}
                                 </font>
-                            </a>
-						</li>
+                            </span>
+                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="Progile.html">My Profile</a></li>
+                                <li><a ng-click="signout()">Sign Out</a></li>
+                            </ul>
+                        </li>
 	    			</ul>
 	    			<!--End Navigation Bar Items-->
 	    		</div>
