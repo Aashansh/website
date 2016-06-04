@@ -265,7 +265,19 @@ Forms.controller('profile', [ '$scope','authService','$http', function($scope, a
     $scope.getImg = function(){
         console.log($scope.imgurl);
     }
-
+    $scope.admin = false;
+    $http({
+        method: 'GET',
+        url: 'http://localhost:3000/users'
+        }).then(function successCallback(response) {
+            for(i=0;i<response.data.length;i++){
+                if(response.data[i].username==$scope.username && response.data[i].admin==true){
+                    $scope.admin = true;
+                }
+            }
+        }, function errorCallback(response) {
+            
+        });
     $http({
         method: 'GET',
         url: 'http://localhost:3000/profiles'
