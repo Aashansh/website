@@ -25,6 +25,14 @@ router.post('/register', function(req, res) {
     });
 });
 
+// Delete function for users
+router.delete('/:userId',Verify.verifyOrdinaryUser, Verify.verifyAdmin, function(req, res, next) {
+  User.findByIdAndRemove(req.params.userId, function (err, resp) {        
+    if (err) throw err;
+    res.json(resp);
+  });
+});
+
 router.post('/login', function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
     if (err) {
