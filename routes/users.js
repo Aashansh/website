@@ -25,14 +25,6 @@ router.post('/register', function(req, res) {
     });
 });
 
-// Delete function for users
-router.delete('/:userId',Verify.verifyOrdinaryUser, Verify.verifyAdmin, function(req, res, next) {
-  User.findByIdAndRemove(req.params.userId, function (err, resp) {        
-    if (err) throw err;
-    res.json(resp);
-  });
-});
-
 router.post('/login', function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
     if (err) {
@@ -65,6 +57,15 @@ router.get('/logout', function(req, res) {
     req.logout();
   res.status(200).json({
     status: 'Bye!'
+  });
+});
+
+// Delete function for users
+router.route('/:userId')
+.delete(Verify.verifyOrdinaryUser, Verify.verifyAdmin, function(req, res, next) {
+  User.findByIdAndRemove(req.params.userId, function (err, resp) {        
+    if (err) throw err;
+    res.json(resp);
   });
 });
 
