@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 var Courses = require('../models/course');
+var Profiles = require('../models/profile');
 var Verify = require('./verify');
 var fs = require('fs');
 var courseRouter = express.Router();
@@ -61,5 +62,38 @@ courseRouter.route('/:courseId')
         res.json(resp);
     });
 });
+
+courseRouter.route('/leave/:courseId')
+.put(Verify.verifyOrdinaryUser, function (req, res, next) {
+    Courses.findByIdAndUpdate(req.params.courseId, { $pull: { "enrolledstudents": req.body.profileId} }, function (err, course) {
+        if (err) throw err;
+        res.json(req.body.profileId);
+    });
+});
+
+courseRouter.route('/register/:courseId')
+.put(Verify.verifyOrdinaryUser, function (req, res, next) {
+    Courses.findByIdAndUpdate(req.params.courseId, { $addToSet: { "enrolledstudents": req.body.profileId} }, {new: true}, function (err, course) {
+        if (err) throw err;
+        res.json(req.body.profileId);
+    });
+});
+
+courseRouter.route('/enroll/:courseId')
+.put(Verify.verifyOrdinaryUser, function (req, res, next) {
+    Profiles.findByIdAndUpdate(req.body.profileId, { $addToSet: { "course": req.params.courseId} }, {new: true}, function (err, course) {
+        if (err) throw err;
+        res.json(req.params.courseId);
+    });
+});
+
+courseRouter.route('/cancel/:courseId')
+.put(Verify.verifyOrdinaryUser, function (req, res, next) {
+    Profiles.findByIdAndUpdate(req.body.profileId, { $pull: { "course": req.params.courseId} }, function (err, course) {
+        if (err) throw err;
+        res.json(req.params.courseId);
+    });
+});
+
 
 module.exports = courseRouter;

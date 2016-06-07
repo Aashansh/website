@@ -9,7 +9,9 @@ var User = new Schema({
     admin:   {
         type: Boolean,
         default: false
-    }
+    },
+    resetPasswordToken: String,
+  	resetPasswordExpires: Date
 });
 
 User.plugin(passportLocalMongoose);

@@ -12,7 +12,6 @@ var fs = require('fs');
 var multer = require('multer');
 
 
-
 mongoose.connect(config.mongoUrl);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -25,6 +24,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var profileRouter = require('./routes/profileRouter');
 var courseRouter = require('./routes/courseRouter');
+var forgotRouter = require('./routes/forgotRouter');
 
 var app = express();
 
@@ -77,6 +77,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/profiles',profileRouter);
 app.use('/courses',courseRouter);
+app.use('/forgot',forgotRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

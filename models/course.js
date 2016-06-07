@@ -35,9 +35,8 @@ var courseSchema = new Schema({
         type: String,
         required: true
     },
-    totalstudents: {
-        type: Number,
-        default: 0
+    enrolledstudents: {
+        type: [Schema.Types.ObjectId]
     },
 }, {
     timestamps: true

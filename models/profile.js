@@ -16,8 +16,7 @@ var profileSchema = new Schema({
         required: true
     },
     course: {
-        type: String,
-        required: true
+        type: [Schema.Types.ObjectId]
     },
     skills: {
         type: String,
