@@ -19,7 +19,10 @@ courseRouter.route('/')
 
 .post(Verify.verifyOrdinaryUser, Verify.verifyAdmin, function (req, res, next) {
     Courses.create(req.body, function (err, course) {
-        if (err) throw err;
+        if (err) {
+            console.log(err);
+            throw err;
+        }
         console.log('Created the Course');
         var id = course._id;
 

@@ -78,6 +78,13 @@
                                 </font>
                             </a>
                         </li>
+                        <li>
+                            <a href="courses.html"class="navbar-items btn">
+                                <font color="blue">
+                                    Courses
+                                </font>
+                            </a>
+                        </li>>
                         <li ng-show="loggedin==false" id="PrintAndMediaDropdown">
                             <span class="btn btn-dropdown dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 <font color="brown">
@@ -170,7 +177,9 @@
                                                                             Course Enrolled In:
                                                                         </label>
                                                                         <h6 style="margin-bottom:20px;">
-                                                                            {{user.course}}<br>
+                                                                            <span ng-repeat="course in user.course">
+                                                                                 
+                                                                            </span>
                                                                         </h6>
                                                                     </div>
                                                                 </div>
@@ -236,14 +245,6 @@
 
                                                             </div>
                                                             <div class="col-sm-8">
-                                                                <div class="row no-padding">
-                                                                    <div class="form-group col-sm-12">
-                                                                        <label style="display:block">
-                                                                            Course Enrolled In:
-                                                                        </label>
-                                                                        <input type="text" ng-model="course" style="padding-bottom:0px;height:2em;width:50%"></input>
-                                                                    </div>
-                                                                </div>
                                                                 <div class="row no-padding">
                                                                     <div class="form-group col-sm-12">
                                                                        <label style="display:block">

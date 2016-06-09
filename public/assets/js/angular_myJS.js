@@ -192,9 +192,13 @@ Forms.controller('Profiles', [ '$scope','authService','$http','authService', fun
     $scope.id = authService.retrieve(0);
     $scope.username = authService.retrieve(1);
     $scope.profilesubmitted = false;
+
     if($scope.username){
         $scope.loggedin = true;
     }
+
+
+
     $scope.admin = false;
         $http({
         method: 'GET',
@@ -232,6 +236,8 @@ Forms.controller('Profiles', [ '$scope','authService','$http','authService', fun
         }, function errorCallback(response) {
             
         });
+
+
 }]);
 
 Forms.controller('Users', [ '$scope','authService','$http','authService', function($scope, authService,$http,authService) {
@@ -242,6 +248,140 @@ Forms.controller('Users', [ '$scope','authService','$http','authService', functi
     if($scope.username){
         $scope.loggedin = true;
     }
+
+    $scope.coursename;
+    $scope.courseimage;
+    $scope.category;
+    $scope.description;
+    $scope.location;
+
+$(function() {
+
+    //for displaying datepicker
+
+    $('#datetimepicker1').datetimepicker({
+        viewMode: 'years',
+        format: 'DD/MM/YYYY',
+    });
+    $('#datetimepicker2').datetimepicker({
+        viewMode: 'years',
+        format: 'DD/MM/YYYY',
+    });
+
+    //for getting input value
+
+    $("#datetimepicker1").on("dp.change", function() {
+
+        $scope.From = $("#datetimepicker1").val();
+
+    });
+    $("#datetimepicker2").on("dp.change", function() {
+
+        $scope.To = $("#datetimepicker2").val();
+
+    });
+
+ });
+
+    $scope.RegisterForCourse = function(item){
+            console.log("Profile",$scope.profileid);
+            $http({
+            method: 'PUT',
+            url: 'http://localhost:3000/courses/register/' + item,
+            headers: {
+                  'x-access-token': $scope.id,
+                },
+            data:{
+                "profileId":$scope.profileid,
+            }
+            }).then(function successCallback(response) {
+            }, function errorCallback(response) {
+                
+            });
+
+            $http({
+            method: 'PUT',
+            url: 'http://localhost:3000/courses/enroll/' + item,
+            headers: {
+                  'x-access-token': $scope.id,
+                },
+            data:{
+                "profileId":$scope.profileid,
+            }
+            }).then(function successCallback(response) {
+                window.location = "courses.html";
+            }, function errorCallback(response) {
+                
+            });        
+    }
+
+    $scope.LeaveCourse = function(item){
+       $http({
+            method: 'PUT',
+            url: 'http://localhost:3000/courses/leave/' + item,
+            headers: {
+                  'x-access-token': $scope.id,
+                },
+            data:{
+                "profileId":$scope.profileid,
+            }
+            }).then(function successCallback(response) {
+            }, function errorCallback(response) {
+            
+        });
+
+        $http({
+            method: 'PUT',
+            url: 'http://localhost:3000/courses/cancel/' + item,
+            headers: {
+                  'x-access-token': $scope.id,
+                },
+            data:{
+                "profileId":$scope.profileid,
+            }
+            }).then(function successCallback(response) {
+                window.location = "courses.html";
+            }, function errorCallback(response) {
+            
+        });  
+
+    }
+    $scope.AddCourse = function(){
+        console.log($scope.From);
+        console.log($scope.To);
+        var temp = $scope.From.split("/");
+        var From = new Date(temp[2],temp[1]-1,temp[0]);
+        temp = $scope.To.split("/");
+        var To = new Date(temp[2],temp[1]-1,temp[0]); 
+        // console.log(From,To);
+        $http({
+        method: 'POST',
+        url: 'http://localhost:3000/courses',
+        headers: {
+              'x-access-token': $scope.id
+            },
+        data:{
+            "name":$scope.coursename,
+            "image":$scope.courseimage,
+            "description":$scope.description,
+            "category":$scope.category,
+            "from":From,
+            "to":To,
+            "location":$scope.location
+        }
+        }).then(function successCallback(response) {
+            window.location = "courses.html";
+        }, function errorCallback(response) {
+            
+        });
+    }
+
+    $scope.signout1 = function(){
+        authService.clearAll();
+        window.location = window.location;
+    }
+
+ 
 
     $scope.admin = false;
         $http({
@@ -259,12 +399,67 @@ Forms.controller('Users', [ '$scope','authService','$http','authService', functi
 
         $http({
         method: 'GET',
+        url: 'http://localhost:3000/courses'
+        }).then(function successCallback(response) {
+            $scope.courses = response.data;
+            for(var i=0;i<$scope.courses.length;i++){
+                $scope.courses[i].from = $scope.courses[i].from.split("T")[0];
+                $scope.courses[i].to = $scope.courses[i].to.split("T")[0];
+
+            }
+        }, function errorCallback(response) {
+            
+        }); 
+
+
+        $http({
+        method: 'GET',
+        url: 'http://localhost:3000/profiles'
+        }).then(function successCallback(response) {
+            $scope.profiles = response.data;
+            for (var i = $scope.profiles.length - 1; i >= 0; i--) {
+               
+                if($scope.profiles[i].name===$scope.username){
+                    $scope.usercourses = $scope.profiles[i].course;
+                    $scope.profileid = $scope.profiles[i]._id;
+                }
+                 
+            };
+            console.log($scope.usercourses);
+        }, function errorCallback(response) {
+            
+        }); 
+
+        $http({
+        method: 'GET',
         url: 'http://localhost:3000/users'
         }).then(function successCallback(response) {
+            $scope.profilefilled = false;
             $scope.users = response.data;
+            for(i=0;i<response.data.length;i++){
+                if(response.data[i].username==$scope.username){
+                    $scope.userid = response.data[i]._id;
+
+                }
+                $scope.profilefilled = true;
+        }
+
         }, function errorCallback(response) {
             
         });   
+
+
+    $scope.registered = function(item){
+        console.log(item);
+        console.log($scope.usercourses);
+        if($scope.usercourses.indexOf(item)>-1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     $scope.deleteUser = function(id){
         $http({
         method: 'DELETE',
@@ -274,6 +469,19 @@ Forms.controller('Users', [ '$scope','authService','$http','authService', functi
             },
         }).then(function successCallback(response) {
             window.location = "Users.html";
+        }, function errorCallback(response) {
+            
+        });
+    }
+    $scope.deleteCourse = function(id){
+        $http({
+        method: 'DELETE',
+        url: 'http://localhost:3000/courses/' + id,
+        headers: {
+              'x-access-token': $scope.id
+            },
+        }).then(function successCallback(response) {
+            window.location = "courses.html";
         }, function errorCallback(response) {
             
         });
@@ -325,6 +533,9 @@ Forms.controller('profile', [ '$scope','authService','$http', function($scope, a
     $scope.getImg = function(){
         console.log($scope.imgurl);
     }
+
+
+
     $scope.admin = false;
     $http({
         method: 'GET',
@@ -342,7 +553,6 @@ Forms.controller('profile', [ '$scope','authService','$http', function($scope, a
         method: 'GET',
         url: 'http://localhost:3000/profiles'
         }).then(function successCallback(response) {
-            console.log(response.data.length);
             for(i=0;i<response.data.length;i++){
                 if(response.data[i].name==$scope.username){
                     $scope.profilesubmitted = true;
@@ -351,6 +561,8 @@ Forms.controller('profile', [ '$scope','authService','$http', function($scope, a
             }
         }, function errorCallback(response) {
             
-        });    
+        });  
+
+
 }]);
 

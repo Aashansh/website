@@ -125,7 +125,6 @@ body{
 }
 .dropdown-menu {
     z-index: 53;
-	background-color: rgba(0, 0, 0, 0.8);
 }
 
 
@@ -1174,4 +1173,13 @@ select {
     position:absolute;
     pointer-events:none;
     display:block;
+}
+
+.course-details{
+    text-align: center;
+    font-size: 12px;
+}
+.course-details h5{
+    font-size: 12px;
+    display: inline-block;   
 }
