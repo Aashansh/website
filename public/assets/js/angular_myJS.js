@@ -198,7 +198,7 @@ Forms.controller('Profiles', [ '$scope','authService','$http','authService', fun
     }
 
 
-
+    $scope.Profiles = {}
     $scope.admin = false;
         $http({
         method: 'GET',
@@ -215,10 +215,26 @@ Forms.controller('Profiles', [ '$scope','authService','$http','authService', fun
 
         $http({
         method: 'GET',
+        url: 'http://localhost:3000/courses'
+        }).then(function successCallback(response) {
+            $scope.courses = response.data;
+            for(var i=0;i<$scope.courses.length;i++){
+                $scope.courses[i].from = $scope.courses[i].from.split("T")[0];
+                $scope.courses[i].to = $scope.courses[i].to.split("T")[0];
+                console.log(response.data[i]);
+            }
+
+        }, function errorCallback(response) {
+            
+        }); 
+
+        $http({
+        method: 'GET',
         url: 'http://localhost:3000/profiles'
         }).then(function successCallback(response) {
             console.log(response.data.length);
             for(i=0;i<response.data.length;i++){
+                
                 if(response.data[i].name==$scope.username){
                     $scope.profilesubmitted = true;
                     $scope.user = response.data[i];
@@ -237,6 +253,14 @@ Forms.controller('Profiles', [ '$scope','authService','$http','authService', fun
             
         });
 
+        $scope.getcoursebyname = function(id){
+            for (var i = $scope.courses.length - 1; i >= 0; i--){
+                console.log($scope.courses[i]);
+                if($scope.courses[i]._id===id){
+                    return $scope.courses[i].name;
+                }
+            }
+        }
 
 }]);
 
@@ -381,7 +405,7 @@ $(function() {
         window.location = window.location;
     }
 
- 
+    
 
     $scope.admin = false;
         $http({
@@ -396,7 +420,7 @@ $(function() {
         }, function errorCallback(response) {
             
         });
-
+        $scope.courseidtoenrolledlist = {};
         $http({
         method: 'GET',
         url: 'http://localhost:3000/courses'
@@ -405,12 +429,15 @@ $(function() {
             for(var i=0;i<$scope.courses.length;i++){
                 $scope.courses[i].from = $scope.courses[i].from.split("T")[0];
                 $scope.courses[i].to = $scope.courses[i].to.split("T")[0];
-
+                console.log(response.data[i]);
             }
+
         }, function errorCallback(response) {
             
         }); 
 
+        
+        $scope.Profile = {};
 
         $http({
         method: 'GET',
@@ -418,14 +445,13 @@ $(function() {
         }).then(function successCallback(response) {
             $scope.profiles = response.data;
             for (var i = $scope.profiles.length - 1; i >= 0; i--) {
-               
+               $scope.Profile[response.data[i]._id] = response.data[i].name
                 if($scope.profiles[i].name===$scope.username){
                     $scope.usercourses = $scope.profiles[i].course;
                     $scope.profileid = $scope.profiles[i]._id;
                 }
                  
             };
-            console.log($scope.usercourses);
         }, function errorCallback(response) {
             
         }); 
@@ -448,10 +474,15 @@ $(function() {
             
         });   
 
-
+    
+    $scope.GetCourseStudents = function(course){
+        $scope.studentlist = [];
+        for (var i = course.enrolledstudents.length - 1; i >= 0; i--) {
+            $scope.studentlist.push($scope.Profile[course.enrolledstudents[i]]);
+        };
+        console.log($scope.studentlist);
+    }
     $scope.registered = function(item){
-        console.log(item);
-        console.log($scope.usercourses);
         if($scope.usercourses.indexOf(item)>-1){
             return true;
         }
@@ -487,6 +518,11 @@ $(function() {
         });
     }
 
+    $scope.SetCourseDescription = function(course){
+        $scope.CourseHeading = course.name;
+        $scope.Description = course.description;
+    }
+
 }]);
 
 Forms.controller('profile', [ '$scope','authService','$http', function($scope, authService,$http) {
@@ -510,7 +546,7 @@ Forms.controller('profile', [ '$scope','authService','$http', function($scope, a
     }
     $scope.Submit = function(){
         console.log($scope.username);
-      $http({
+        $http({
         method: 'POST',
         url: 'http://localhost:3000/profiles',
         headers: {
@@ -530,12 +566,14 @@ Forms.controller('profile', [ '$scope','authService','$http', function($scope, a
         });
     }
 
+    
+
     $scope.getImg = function(){
         console.log($scope.imgurl);
     }
 
 
-
+    $scope.Profile = {};
     $scope.admin = false;
     $http({
         method: 'GET',
@@ -549,20 +587,37 @@ Forms.controller('profile', [ '$scope','authService','$http', function($scope, a
         }, function errorCallback(response) {
             
         });
+    $scope.course = {};
+    $http({
+        method: 'GET',
+        url: 'http://localhost:3000/courses'
+        }).then(function successCallback(response) {
+            for(i=0;i<response.data.length;i++){
+                $scope.course[response.data[i]._id] = response.data[i].name
+            }
+        }, function errorCallback(response) {
+            
+        });
     $http({
         method: 'GET',
         url: 'http://localhost:3000/profiles'
         }).then(function successCallback(response) {
             for(i=0;i<response.data.length;i++){
+                $scope.Profile[response.data[i]._id] = response.data[i].name
                 if(response.data[i].name==$scope.username){
                     $scope.profilesubmitted = true;
                     $scope.user = response.data[i];
                 }
             }
+            console.log($scope.user);
+            console.log($scope.Profile);
+            console.log($scope.course);
         }, function errorCallback(response) {
             
         });  
 
-
+    $scope.getcoursename = function(id){
+        return $scope.course[id];
+    }
 }]);
 

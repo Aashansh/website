@@ -170,7 +170,6 @@
 					                            <div class="main" style="height:auto;min-height:20px;" >
 					                                <h3 class="name">{{course.name}}</h3>
 					                                <div class="course-details">
-					                                	<h5>{{course.description}}</h5><br>
 					                                	<label>Category:</label>
 					                                	<h5>{{course.category}}</h5><br>
 					                                	<label>Start Date:</label>
@@ -182,11 +181,19 @@
 					                                	<label>Students Enrolled:</label>
 					                                	<h5>{{course.enrolledstudents.length}}</h5><br>
 				                                	</div>
+				                                	<button class="btn btn-block btn-info" ng-click="GetCourseStudents(course)" data-toggle="modal" data-target="#myModal">Enrolled Students</button>
+
+				                                	<button class="btn btn-block btn-info" ng-click="SetCourseDescription(course)" data-toggle="modal" data-target="#descriptionModal">Course Description</button>
+
+				                                	
+
 					                                <button ng-show="admin==true" class="btn btn-block btn-danger" ng-click="deleteCourse(course._id)">DELETE COURSE</button>
 					                                <div ng-show="admin==false">
 					                                	<a ng-show="profilefilled==false" class="btn btn-block btn-info" href="Profile.html" style="padding:0;">PLEASE FILL IN YOUR PROFILE FIRST</a>
 					                                	<button ng-show="profilefilled==true && registered(course._id)==false" class="btn btn-block btn-success" ng-click="RegisterForCourse(course._id)">REGISTER FOR COURSE</button>
 					                                	<button ng-show="profilefilled==true && registered(course._id)==true" class="btn btn-block btn-danger" ng-click="LeaveCourse(course._id)">LEAVE COURSE</button>
+
+
 					                                </div>
 					                            </div>					                            
 					                        </div>
@@ -337,6 +344,49 @@
 		        </div>
 				</div>
 			</center>
+		</div>
+
+		<div id="myModal" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		        <h4 class="modal-title">Enrolled Students</h4>
+		      </div>
+		      <div class="modal-body">
+		      	<li ng-repeat="student in studentlist">
+		      		{{student}}
+		      	</li>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+
+		  </div>
+		</div>
+
+		<div id="descriptionModal" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		        <h4 class="modal-title">Course Name: {{CourseHeading}}</h4>
+		      </div>
+		      <div class="modal-body">
+		      	Description:<br>
+		      	{{Description}}
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+
+		  </div>
 		</div>
 		<!-- End Wrapper -->
 		<!-- JS Files -->

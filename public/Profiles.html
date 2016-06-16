@@ -176,7 +176,7 @@
 					                                <ul class="student-detaillist" style="text-align:center;padding-top:12px;padding-bottom:12px;">
 					                                	<li style="margin-bottom:10px;">
 					                                		<label style="margin-bottom:0">Course Enrolled In:</label><br>
-					                                		<span >{{profile.course}}</span>
+					                                		<span ng-repeat="course in profile.course">{{getcoursebyname(course)}}</span>
 					                                	</li>
 					                                	<li style="margin-bottom:10px;">
 					                                		<label style="margin-bottom:0">Skills:</label><br>
