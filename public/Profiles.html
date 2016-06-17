@@ -153,18 +153,17 @@
 	    				<div class="row page-intro" style="text-align:center">
 	    					<h2>Our Students</h2>
 	    					<div class="col-md-2 col-md-offset-3">
-	    						<input type="search" placeholder="Search">
+	    						<input ng-model="search" type="search" placeholder="Search">
 	    					</div>
 	    					<div class="col-md-3">
 	    						<label><font color=black>Search by:</font></label>
-		    					<select>
+		    					<select ng-model="key">
 									<option value="name">Name</option>
 								    <option value="skill">Skill</option>
-									<option value="course">Course Enrolled In</option>
 								</select>
 							</div>
 							<div class="col-md-1">
-								 <button class = "btn-sm btn-primary" type="button">Go</button> 
+								 <button ng-click="setsearch()" class = "btn-sm btn-primary" type="button">Go</button> 
 							</div> 
 	    				</div>
 	    				
@@ -176,9 +175,9 @@
 
 	    				<div class="col-md-10 col-md-offset-1">
 	    					    <!-- Card Scope Start -->
-						        <div class="col-md-4" ng-repeat="profile in profiles">
+						        <div ng-show="searchtrue(profile)" class="col-md-4" ng-repeat="profile in profiles">
 			        		        <!-- Card Start -->
-			                			<div class="card hoverable " data-toggle="modal" data-target="#Modal-NehaJaiswal">
+			                			<div  class="card hoverable " data-toggle="modal" data-target="#Modal-NehaJaiswal">
 			                    			
 							                <div class="user" style="border-radius:0;height:auto;margin:0px;width:100%">
 					                            <img src="{{profile.image}}" alt="{{profile.image}}"/>

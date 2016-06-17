@@ -158,29 +158,32 @@
 	    				<div class="row page-intro" style="text-align:center">
 	    					<h2>Courses</h2>
 	    					<div class="col-md-2 col-md-offset-3">
-	    						<input type="search" placeholder="Search">
+	    						<input type="search" ng-model="search" placeholder="Search">
 
 	    					</div>
-	    					<div class="col-md-3">
-	    						<label><font color=black>Search by:</font></label>
-		    					<select>
-									<option value="name">Name of course</option>
-								    <option value="category">Category</option>
-									<option value="location">Location</option>
-								</select>
+	    					<div class="row">
+		    					<div class="col-md-3">
+		    						<label><font color=black>Search by:</font></label>
+			    					<select ng-model="key">
+										<option value="name">Name of course</option>
+									    <option value="category">Category</option>
+										<option value="location">Location</option>
+									</select>
+								</div>
+
+								<div class="col-md-1">
+									 <button class = "btn-sm btn-primary" ng-click="setsearch()" type="button">Go</button> 
+								</div> 
 							</div>
-							<div class="col-md-1">
-								 <button class = "btn-sm btn-primary" type="button">Go</button> 
-							</div> 
 	    					<a ng-show="admin==true" type="button" class="btn btn-warning btn-block" id="reserve"> Add Course </a>
 	    				</div>
 	    				<br><br>
 
 	    				<div class="col-md-10 col-md-offset-1">
 	    					    <!-- Card Scope Start -->
-						        <div class="col-md-4" ng-repeat="course in courses">
+						        <div ng-show="searchtrue(course)" class="col-md-4" ng-repeat="course in courses">
 			        		        <!-- Card Start -->
-			                			<div class="card hoverable "style="height:auto">
+			                			<div  class="card hoverable "style="height:auto">
 					                        <div class="content">
 					                            <div class="main" style="height:auto;min-height:20px;" >
 					                                <h3 class="name">{{course.name}}</h3>

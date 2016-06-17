@@ -198,6 +198,27 @@ Forms.controller('Profiles', [ '$scope','authService','$http','authService', fun
     }
 
 
+    $scope.searchkey;
+    $scope.searchvalue;
+    $scope.search = "";
+    $scope.key = "";
+    $scope.setsearch = function(){
+        $scope.searchkey = $scope.key;
+        $scope.searchvalue = $scope.search;
+    }
+
+    $scope.searchtrue = function(profile){
+        if($scope.searchkey==="name"){
+            console.log(profile.name);
+            return (profile.name).toLowerCase().startsWith($scope.searchvalue.toLowerCase());
+        }
+        if($scope.searchkey==="skill"){
+            return profile.skills.toLowerCase().startsWith($scope.searchvalue.toLowerCase());
+        }
+        return true;
+
+    }
+
     $scope.Profiles = {}
     $scope.admin = false;
         $http({
@@ -255,7 +276,6 @@ Forms.controller('Profiles', [ '$scope','authService','$http','authService', fun
 
         $scope.getcoursebyname = function(id){
             for (var i = $scope.courses.length - 1; i >= 0; i--){
-                console.log($scope.courses[i]);
                 if($scope.courses[i]._id===id){
                     return $scope.courses[i].name;
                 }
@@ -307,6 +327,28 @@ $(function() {
 
  });
 
+    $scope.searchkey;
+    $scope.searchvalue;
+    $scope.search = "";
+    $scope.key = "";
+    $scope.setsearch = function(){
+        $scope.searchkey = $scope.key;
+        $scope.searchvalue = $scope.search;
+    }
+
+    $scope.searchtrue = function(course){
+        if($scope.searchkey==="name"){
+            return course.name.toLowerCase().startsWith($scope.searchvalue.toLowerCase());
+        }
+        if($scope.searchkey==="category"){
+            return course.category.startsWith($scope.searchvalue);
+        }
+        if($scope.searchkey==="location"){
+            return course.location.startsWith($scope.searchvalue);
+        }
+        return true;
+
+    }
     $scope.RegisterForCourse = function(item){
             console.log("Profile",$scope.profileid);
             $http({
