@@ -443,7 +443,7 @@ $(function() {
         });
     }
 
-    $scope.signout1 = function(){
+    $scope.signout = function(){
         authService.clearAll();
         window.location = window.location;
     }
