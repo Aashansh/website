@@ -66,6 +66,7 @@ Forms.controller('Login',['$scope','$window','$http', 'authService',function($sc
         }
         }).then(function successCallback(response) {
             window.location = "Profile.html";
+            authService.clearAll();
             authService.store(0,response.data.token);
             authService.store(1,login_uname);
             console.log(response.data.token);
@@ -576,6 +577,7 @@ Forms.controller('profile', [ '$scope','authService','$http', function($scope, a
     $scope.lookingfor;
     $scope.skills;
     $scope.course;
+    console.log($scope.id);
     if($scope.username){
         $scope.loggedin = true;
     }
@@ -587,7 +589,7 @@ Forms.controller('profile', [ '$scope','authService','$http', function($scope, a
         window.location = window.location;
     }
     $scope.Submit = function(){
-        console.log($scope.username);
+        console.log($scope.id);
         $http({
         method: 'POST',
         url: 'http://localhost:3000/profiles',
@@ -597,7 +599,6 @@ Forms.controller('profile', [ '$scope','authService','$http', function($scope, a
         data:{
           "name" : $scope.username,
           "image" : $scope.imgurl,
-          "course": $scope.course,
           "skills":$scope.skills,
           "lookingfor":$scope.lookingfor
         }
